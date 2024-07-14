@@ -1,35 +1,74 @@
-export interface IAppState {
-    cardList: IProduct[];
-    basket: IProduct[];
-    order: IOrder;
+// Интерфейс списка карточек:
+
+interface ICardList {
+    createCard(): void; // Отображает карточки на странице.
 }
 
-export type ID = string;
+// Интерфейс карточки:
 
-// Модель товара:
-export interface IProduct {
-    id: string;
+interface ICard {
     category: string;
     title: string;
-    discription: string;
     image: string;
-    price: number | null;
+    price: number;
 }
 
-//Формы:
-export interface IPaymentForm {
-    paymentMethod: string;
-    address: string;
+// Интерфейс всех попапов: 
+//! Этот класс является прототипом всех классов модальных окон.
+
+interface IPopaps {
+    clouseButton: HTMLElement | null;
+    title?: string;
+    nextButton: HTMLElement | null;
+    openPopap(): void; // Открывает попап.
+    clousePopap(): void; // Закрывает попап.
+    sendingData?(): void; // Отправляет пользовательские данные.
 }
 
-export interface IContactsForm {
-    email: string;
-    phone: string;
+// Интерфейс попапа карточки:
+
+interface ICardPopap {
+    category: string;
+    image: string;
+    description: string;
+    price: number;
 }
 
-export interface IAllForms extends IPaymentForm, IContactsForm {}
+// Интерфейс корзины: 
 
-// Данные заказа:
-export interface IOrder extends IAllForms {
-    items: IProduct;
+interface IBasket {
+    shopList?: {
+        listItemNumber: number;
+        title: string;
+        price: number;
+        deleteButton: HTMLElement | null; 
+    };
+    totalPrice: number;
+    countTotalPrice(): number; // Считает итоговую сумму оплаты.
+}
+
+// Интерфейс попапа оплаты:
+
+interface IPayment {
+    paymentTitle: string;
+    onlinePaymentRadio: HTMLElement | null;
+    offlinePaymentRadio: HTMLElement | null;
+    addressTitle: string;
+    addressInput: HTMLElement | null;
+}
+
+// Интерфейс ввода данный пользователя:
+
+interface IUserDataForm {
+    emailTitle: string;
+    emailInput: HTMLElement | null;
+    phoneTitle: string;
+    phoneInput: HTMLElement | null;
+}
+
+// Последний попап:
+
+interface IFinalPopap {
+    image: string;
+    totalPrice: number;
 }
