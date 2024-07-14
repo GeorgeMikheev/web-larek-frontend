@@ -11,6 +11,7 @@ interface ICard {
     title: string;
     image: string;
     price: number;
+    AddToBasket(): void; // Доюавляет това в корзину.
 }
 
 // Интерфейс всех попапов: 
@@ -45,6 +46,7 @@ interface IBasket {
     };
     totalPrice: number;
     countTotalPrice(): number; // Считает итоговую сумму оплаты.
+    deletePurchase(purchase: string): void; // Удаляет покупку из корзины.
 }
 
 // Интерфейс попапа оплаты:
