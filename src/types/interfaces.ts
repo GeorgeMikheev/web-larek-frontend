@@ -1,12 +1,12 @@
 // Интерфейс списка карточек:
 
-interface ICardList {
+export interface ICardList {
     createCard(): void; // Отображает карточки на странице.
 }
 
 // Интерфейс карточки:
 
-interface ICard {
+export interface ICard {
     category: string;
     title: string;
     image: string;
@@ -17,7 +17,7 @@ interface ICard {
 // Интерфейс всех попапов: 
 //! Этот класс является прототипом всех классов модальных окон.
 
-interface IPopaps {
+export interface IPopaps {
     clouseButton: HTMLElement | null;
     title?: string;
     nextButton: HTMLElement | null;
@@ -28,7 +28,7 @@ interface IPopaps {
 
 // Интерфейс попапа карточки:
 
-interface ICardPopap {
+export interface ICardPopap {
     category: string;
     image: string;
     description: string;
@@ -37,7 +37,7 @@ interface ICardPopap {
 
 // Интерфейс корзины: 
 
-interface IBasket {
+export interface IBasket {
     shopList?: {
         listItemNumber: number;
         title: string;
@@ -51,7 +51,7 @@ interface IBasket {
 
 // Интерфейс попапа оплаты:
 
-interface IPayment {
+export interface IPayment {
     paymentTitle: string;
     onlinePaymentRadio: HTMLElement | null;
     offlinePaymentRadio: HTMLElement | null;
@@ -61,7 +61,7 @@ interface IPayment {
 
 // Интерфейс ввода данный пользователя:
 
-interface IUserDataForm {
+export interface IUserDataForm {
     emailTitle: string;
     emailInput: HTMLElement | null;
     phoneTitle: string;
@@ -70,7 +70,7 @@ interface IUserDataForm {
 
 // Последний попап:
 
-interface IFinalPopap {
+export interface IFinalPopap {
     image: string;
     totalPrice: number;
 }
