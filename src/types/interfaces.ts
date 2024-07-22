@@ -1,17 +1,21 @@
-// Интерфейс списка карточек:
-
-export interface ICardList {
-    createCard(): void; // Отображает карточки на странице.
-}
-
 // Интерфейс карточки:
 
 export interface ICard {
+    id: string;
     category: string;
     title: string;
+    description: string;
     image: string;
     price: number;
-    AddToBasket(): void; // Доюавляет това в корзину.
+    //AddToBasket(): void; // Добавляет товар в корзину.
+}
+
+// Интерфейс списка карточек:
+
+export interface ICardList {
+    cardContainer: HTMLElement | null;
+    cardTemplate: HTMLTemplateElement | null;
+    createCard(): void; // Отображает карточки на странице.
 }
 
 // Интерфейс всех попапов: 
@@ -26,24 +30,10 @@ export interface IPopaps {
     sendingData?(): void; // Отправляет пользовательские данные.
 }
 
-// Интерфейс попапа карточки:
-
-export interface ICardPopap {
-    category: string;
-    image: string;
-    description: string;
-    price: number;
-}
-
 // Интерфейс корзины: 
 
 export interface IBasket {
-    shopList?: {
-        listItemNumber: number;
-        title: string;
-        price: number;
-        deleteButton: HTMLElement | null; 
-    };
+    shopList?: ICard[];
     totalPrice: number;
     countTotalPrice(): number; // Считает итоговую сумму оплаты.
     deletePurchase(purchase: string): void; // Удаляет покупку из корзины.
@@ -73,4 +63,30 @@ export interface IUserDataForm {
 export interface IFinalPopap {
     image: string;
     totalPrice: number;
+}
+
+// Интерфейс запроса:
+
+export interface IOrder {
+    payment: string;
+    email: string;
+    phone: string;
+    address: string;
+    total: number;
+    items: string[];
+}
+
+// Интерфейсы ответа:
+
+export interface IOrderResult {
+    id: string;
+    total: number;
+}
+
+// Интрефейс класса WebLarekAPI:
+
+export interface IWebLarekAPI {
+    getCardsList(): Promise<ICard[]>;
+    getCard(uuid: string): Promise<ICard>;
+    createOrder(card: IOrder): Promise<object>;
 }
