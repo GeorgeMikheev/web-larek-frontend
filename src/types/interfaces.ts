@@ -33,8 +33,8 @@ export interface IPopaps {
 // Интерфейс корзины: 
 
 export interface IBasket {
-    shopList?: ICard[];
-    totalPrice: number;
+    _shopList?: ICard[];
+    _totalPrice: number;
     countTotalPrice(): number; // Считает итоговую сумму оплаты.
     deletePurchase(purchase: string): void; // Удаляет покупку из корзины.
 }
@@ -49,13 +49,12 @@ export interface IPayment {
     addressInput: HTMLElement | null;
 }
 
-// Интерфейс ввода данный пользователя:
+// Интерфейс ввода данных пользователя:
 
-export interface IUserDataForm {
-    emailTitle: string;
-    emailInput: HTMLElement | null;
-    phoneTitle: string;
-    phoneInput: HTMLElement | null;
+export interface IForm {
+    valid: boolean;
+    errors: string[];
+    
 }
 
 // Последний попап:

@@ -13,23 +13,25 @@ class Popaps extends Component<IPopaps> {
         this._closeButton = ensureElement<HTMLButtonElement>('.modal__close', container);
         this._content = ensureElement<HTMLElement>('.modal__content', container);
 
-        
+        this._closeButton.addEventListener('click', this.closePopap.bind(this));
+        this.container.addEventListener('click', this.closePopap.bind(this));
+        this._content.addEventListener('click', (events) => events.stopPropagation());
     }
 
-    open() {
+    openPopap() {
         this.container.classList.add('modal_active');
         this.events.emit('modal:open');
     }
 
-    close() {
+    closePopap() {
         this.container.classList.remove('modal_active');
         this._content = null;
         this.events.emit('modal:close');
     }
 
-    render(data: IPopaps): HTMLElement {
+    sendingData(data: IPopaps): HTMLElement {
         super.render(data);
-        this.open();
+        this.openPopap();
         return this.container;
     }
 }
