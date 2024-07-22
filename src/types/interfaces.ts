@@ -22,7 +22,7 @@ export interface ICardList {
 //! Этот класс является прототипом всех классов модальных окон.
 
 export interface IPopaps {
-    clouseButton: HTMLElement | null;
+    _clouseButton: HTMLElement | null;
     title?: string;
     nextButton: HTMLElement | null;
     openPopap(): void; // Открывает попап.
