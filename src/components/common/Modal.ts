@@ -1,11 +1,16 @@
-import { IPopaps } from "../../types/interfaces";
+import { allEvents } from "../..";
+import { IPopup } from "../../types/interfaces";
 import { ensureElement } from "../../utils/utils";
 import { Component } from "../base/Component";
 import { IEvents } from "../base/events";
 
-class Popaps extends Component<IPopaps> {
+interface IModalData {
+    content: HTMLElement;
+}
+
+export class Popup extends Component<IModalData> {
     protected _closeButton: HTMLButtonElement;
-    protected _content: HTMLElement
+    protected _content: HTMLElement;
 
     constructor(container: HTMLElement, protected events: IEvents) {
         super(container);
@@ -13,25 +18,29 @@ class Popaps extends Component<IPopaps> {
         this._closeButton = ensureElement<HTMLButtonElement>('.modal__close', container);
         this._content = ensureElement<HTMLElement>('.modal__content', container);
 
-        this._closeButton.addEventListener('click', this.closePopap.bind(this));
-        this.container.addEventListener('click', this.closePopap.bind(this));
-        this._content.addEventListener('click', (events) => events.stopPropagation());
+        this._closeButton.addEventListener('click', this.closePopup.bind(this));
+        this.container.addEventListener('click', this.closePopup.bind(this));
+        this._content.addEventListener('click', (event) => event.stopPropagation());
     }
 
-    openPopap() {
+    set content(value: HTMLElement) {
+        this._content.replaceChildren(value);
+    }
+
+    openPopup() {
         this.container.classList.add('modal_active');
-        this.events.emit('modal:open');
+        this.events.emit(allEvents.modalOpen);
     }
 
-    closePopap() {
+    closePopup() {
         this.container.classList.remove('modal_active');
-        this._content = null;
-        this.events.emit('modal:close');
+        this.content = null;
+        this.events.emit(allEvents.modalClose);
     }
 
-    sendingData(data: IPopaps): HTMLElement {
+    render(data: IModalData): HTMLElement {
         super.render(data);
-        this.openPopap();
+        this.openPopup();
         return this.container;
     }
 }

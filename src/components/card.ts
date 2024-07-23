@@ -14,23 +14,24 @@ export class Card<T> extends Component<ICard> {
     protected _description?: HTMLElement;
     protected _button?: HTMLButtonElement;
 
-    constructor(protected blockName: string, container: HTMLElement, /*actions?: ICardActions*/) {
+    constructor(protected blockName: string, container: HTMLElement, actions?: ICardActions) {
         super(container);
 
         this._title = ensureElement<HTMLElement>(`.${blockName}__title`, container);
-        this._image = ensureElement<HTMLImageElement>(`.${blockName}__image`, container);
+        this._image = container.querySelector(`.${blockName}__image`);
         this._price = ensureElement<HTMLElement>(`.${blockName}__price`, container);
-        this._category = ensureElement<HTMLElement>(`.${blockName}__category`, container);
+        this._category = container.querySelector(`.${blockName}__category`);
         this._button = container.querySelector(`.${blockName}__button`);
         this._description = container.querySelector(`.${blockName}__description`);
 
-        // if (actions?.onClick) {
-        //     if (this._button) {
-        //         this._button.addEventListener('click', actions.onClick);
-        //     } else {
-        //         container.addEventListener('click', actions.onClick);
-        //     }
-        // }
+        if (actions?.onClick) {
+            if (this._button) {
+                this._button.addEventListener('click', actions.onClick);
+            } else {
+                container.addEventListener('click', actions.onClick);
+            }
+        }
+
     }
 
     set id(value: string) {
@@ -69,6 +70,9 @@ export class Card<T> extends Component<ICard> {
         return this._category.textContent || '';
     }
 
+    set button(value: string) {
+        this._button.textContent = value;
+    }
     
     set description(value: string | string[]) {
         if (Array.isArray(value)) {

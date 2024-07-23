@@ -21,7 +21,7 @@ export interface ICardList {
 // Интерфейс всех попапов: 
 //! Этот класс является прототипом всех классов модальных окон.
 
-export interface IPopaps {
+export interface IPopup {
     _clouseButton: HTMLElement | null;
     title?: string;
     nextButton: HTMLElement | null;
@@ -33,10 +33,10 @@ export interface IPopaps {
 // Интерфейс корзины: 
 
 export interface IBasket {
-    _shopList?: ICard[];
-    _totalPrice: number;
-    countTotalPrice(): number; // Считает итоговую сумму оплаты.
-    deletePurchase(purchase: string): void; // Удаляет покупку из корзины.
+    shopList?: ICard[];
+    totalPrice: number;
+    // countTotalPrice(): number; // Считает итоговую сумму оплаты.
+    // deletePurchase(purchase: string): void; // Удаляет покупку из корзины.
 }
 
 // Интерфейс попапа оплаты:
@@ -59,7 +59,7 @@ export interface IForm {
 
 // Последний попап:
 
-export interface IFinalPopap {
+export interface IFinalPopup {
     image: string;
     totalPrice: number;
 }

@@ -1,6 +1,7 @@
 import {Component} from "./base/Component";
 import {IEvents} from "./base/events";
 import {ensureElement} from "../utils/utils";
+import { allEvents } from "..";
 
 interface IPage {
     counter: number;
@@ -24,7 +25,7 @@ export class Page extends Component<IPage> {
         this._basket = ensureElement<HTMLElement>('.header__basket');
 
         this._basket.addEventListener('click', () => {
-            this.events.emit('bids:open');
+            this.events.emit(allEvents.basketOpen);
         });
     }
 
@@ -36,11 +37,11 @@ export class Page extends Component<IPage> {
         this._catalog.replaceChildren(...items);
     }
 
-    // set locked(value: boolean) {
-    //     if (value) {
-    //         this._wrapper.classList.add('page__wrapper_locked');
-    //     } else {
-    //         this._wrapper.classList.remove('page__wrapper_locked');
-    //     }
-    // }
+    set locked(value: boolean) {
+        if (value) {
+            this._wrapper.classList.add('page__wrapper_locked');
+        } else {
+            this._wrapper.classList.remove('page__wrapper_locked');
+        }
+    }
 }
