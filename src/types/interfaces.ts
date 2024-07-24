@@ -10,6 +10,14 @@ export interface ICard {
     //AddToBasket(): void; // Добавляет товар в корзину.
 }
 
+export interface IAppData extends ICard{
+    product: ICard[];
+    basket: string[];
+    //preview: string | null;
+    order: IOrder | null;
+    loading: boolean;
+}
+
 // Интерфейс списка карточек:
 
 export interface ICardList {
@@ -59,8 +67,7 @@ export interface IForm {
 
 // Последний попап:
 
-export interface IFinalPopup {
-    image: string;
+export interface ISuccess {
     totalPrice: number;
 }
 
@@ -68,11 +75,7 @@ export interface IFinalPopup {
 
 export interface IOrder {
     payment: string;
-    email: string;
-    phone: string;
     address: string;
-    total: number;
-    items: string[];
 }
 
 // Интерфейсы ответа:
@@ -82,10 +85,34 @@ export interface IOrderResult {
     total: number;
 }
 
+export interface IContactForm {
+    email: string;
+    phone: string;
+}
+
 // Интрефейс класса WebLarekAPI:
 
 export interface IWebLarekAPI {
     getCardsList(): Promise<ICard[]>;
     getCard(uuid: string): Promise<ICard>;
     createOrder(card: IOrder): Promise<object>;
+}
+
+export type FormErrors = Partial<Record<keyof IOrder | keyof IContactForm, string>>;
+
+export interface ICardActions {
+    onClick: (event: MouseEvent) => void;
+}
+
+export interface ISuccessActions {
+    onClick: (event: MouseEvent) => void;
+}
+
+export interface IPaymentOrder {
+    payment: string;
+    email: string;
+    phone: string;
+    address: string;
+    total: number;
+    items: string[];
 }

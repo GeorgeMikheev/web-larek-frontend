@@ -1,5 +1,5 @@
 import { Api } from "./base/api";
-import { ICard, IOrder, IOrderResult, IWebLarekAPI } from "../types/interfaces";
+import { ICard, IOrder, IOrderResult, IPaymentOrder, IWebLarekAPI } from "../types/interfaces";
 import { ApiListResponse } from "./base/api"
 
 // Класс получения данных с сервера:
@@ -27,8 +27,8 @@ export class WebLarekAPI extends Api implements IWebLarekAPI {
         }));
     }
 
-    createOrder(card: IOrder) {
-        return this.post('/order', card)
+    createOrder(order: IPaymentOrder) {
+        return this.post('/order', order)
                     .then((data: IOrderResult) => data);
     }
 }

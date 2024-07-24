@@ -30,7 +30,7 @@ export class Basket extends Component<IBasketView> {
 
         this._shopList = ensureElement<HTMLElement>('.basket__list', this.container);
         this._totalPrice = this.container.querySelector('.basket__price');
-        this._button = this.container.querySelector('.basket__action');
+        this._button = this.container.querySelector('.basket__button');
 
         if (this._button) {
             this._button.addEventListener('click', () => {
@@ -44,7 +44,6 @@ export class Basket extends Component<IBasketView> {
     set items(items: HTMLElement[]) {
         if (items.length) {
             this._shopList.replaceChildren(...items);
-            console.log(true)
         } else {
             this._shopList.replaceChildren(createElement<HTMLParagraphElement>('p', {
                 textContent: 'Корзина пуста'
