@@ -1,9 +1,9 @@
-import { ICard } from "../ICard";
+import { ICard } from '../ICard';
 
 export interface IBasket {
-    shopList?: ICard[];
-    totalPrice: number;
-}	
+	shopList?: ICard[];
+	totalPrice: number;
+}
 
 export interface IBasketView {
 	items: HTMLElement[];
@@ -15,4 +15,8 @@ export interface IBasketItem {
 	id: number;
 	title: string;
 	price: number;
+}
+
+export interface IBasketItemActions {
+	onClick: (event: MouseEvent) => void;
 }

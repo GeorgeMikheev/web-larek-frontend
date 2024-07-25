@@ -1,4 +1,4 @@
 // Интерфейс модального окна:
 export interface IModalData {
-    content: HTMLElement;
+	content: HTMLElement;
 }

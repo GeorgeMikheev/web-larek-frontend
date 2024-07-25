@@ -1,8 +1,5 @@
 import { Model } from './base/Model';
-import {
-	FormErrors,
-	IAppData,
-} from '../types/IAppData';
+import { FormErrors, IAppData } from '../types/IAppData';
 import { ICard } from '../types/ICard';
 import { IBasket } from '../types/common/IBasket';
 import { IOrderForm } from '../types/order/IOrderForm';

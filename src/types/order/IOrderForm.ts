@@ -1,4 +1,4 @@
 export interface IOrderForm {
-    payment: string;
-    address: string;
+	payment: string;
+	address: string;
 }

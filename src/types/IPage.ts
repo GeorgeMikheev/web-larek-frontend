@@ -1,5 +1,5 @@
- export interface IPage {
-    counter: number;
-    catalog: HTMLElement[];
-    locked: boolean;
+export interface IPage {
+	counter: number;
+	catalog: HTMLElement[];
+	locked: boolean;
 }

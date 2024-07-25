@@ -7,6 +7,7 @@ export class OrderForm extends Form<IOrderForm> {
 	protected _paymentCash: HTMLButtonElement;
 	protected _paymentCard: HTMLButtonElement;
 	protected _address: HTMLInputElement;
+
 	constructor(container: HTMLFormElement, events: IEvents) {
 		super(container, events);
 

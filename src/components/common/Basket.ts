@@ -2,11 +2,11 @@ import { Component } from '../base/Component';
 import { createElement, ensureElement, formatNumber } from '../../utils/utils';
 import { EventEmitter } from '../base/events';
 import { allEvents } from '../..';
-import { IBasketView, IBasketItem } from '../../types/common/IBasket';
-
-export interface IBasketItemActions {
-	onClick: (event: MouseEvent) => void;
-}
+import {
+	IBasketView,
+	IBasketItem,
+	IBasketItemActions,
+} from '../../types/common/IBasket';
 
 export class Basket extends Component<IBasketView> {
 	protected _shopList: HTMLElement;

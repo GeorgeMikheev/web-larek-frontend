@@ -1,9 +1,8 @@
 // Интерфейс модального окна успешного завершения покупки:
 export interface ISuccess {
-    totalPrice: number;
+	totalPrice: number;
 }
 
 export interface ISuccessActions {
-    onClick: (event: MouseEvent) => void;
+	onClick: (event: MouseEvent) => void;
 }
-    
