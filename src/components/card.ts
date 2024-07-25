@@ -1,5 +1,5 @@
 import { Component } from './base/Component';
-import { ICard, ICardActions } from '../types/interfaces';
+import { ICard, ICardActions } from '../types/ICard';
 import { ensureElement } from '../utils/utils';
 
 export class Card<T> extends Component<ICard> {

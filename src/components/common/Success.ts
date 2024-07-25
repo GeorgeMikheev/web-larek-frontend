@@ -1,4 +1,4 @@
-import { ISuccess, ISuccessActions } from '../../types/interfaces';
+import { ISuccess, ISuccessActions } from '../../types/common/ISuccess';
 import { ensureElement } from '../../utils/utils';
 import { Component } from '../base/Component';
 
